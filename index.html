@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AMRS Local DEMO</title>
+  <link rel="stylesheet" href="static/style.css?v=3">
+</head>
+<body>
+<section id="loginPage" class="login-body">
+  <div class="login-shell">
+    <div class="login-hero">
+      <div class="hero-logo">AMRS</div>
+      <h1>機務維修紀錄管理系統</h1>
+      <p>Aircraft Maintenance Records Management System</p>
+      <div class="flow">
+        <span>工單接收</span><b>→</b><span>核對簽核</span><b>→</b>
+        <span>品質歸檔</span><b>→</b><span>查詢調閱</span>
+      </div>
+    </div>
+    <form id="loginForm" class="login-card">
+      <div class="brand"><div class="mark">A</div><div><strong>AMRS</strong><small>Local DEMO</small></div></div>
+      <h2>登入系統</h2>
+      <p class="muted">模擬公司 AD 驗證，人員 ID 使用 2XXXXXX 格式。</p>
+      <label>人員 ID<input id="loginId" value="2400151" maxlength="7" required></label>
+      <label>Password<input id="loginPassword" type="password" value="password" minlength="8" required></label>
+      <label>DEMO 角色
+        <select id="loginRole">
+          <option value="maintenance">維修窗口</option>
+          <option value="control">修管單位</option>
+          <option value="quality">品質機號窗口</option>
+          <option value="quality_lead">品質主窗口</option>
+          <option value="correction">品質勘正承辦人</option>
+          <option value="general">一般使用者</option>
+        </select>
+      </label>
+      <div id="loginError" class="login-error"></div>
+      <button class="btn primary wide">LOGIN</button>
+      <p class="demo-hint">預設帳號：2400151　密碼：password</p>
+    </form>
+  </div>
+</section>
+
+<div id="appPage" class="shell hidden">
+  <aside class="sidebar">
+    <div class="brand"><div class="mark">A</div><div><strong>AMRS</strong><small>Local DEMO</small></div></div>
+    <nav>
+      <button data-page="dashboard" class="active">⌂　個人工作總覽</button>
+      <button data-page="orders">▤　工單確認與簽核</button>
+      <button data-page="corrections">↻　工單勘正作業</button>
+      <button data-page="archive">⌕　已歸檔查詢調閱</button>
+      <button data-page="analytics">▥　統計分析與報表</button>
+    </nav>
+    <div class="side-note"><strong>DEMO</strong><p>資料存在瀏覽器記憶體中，重新整理後會還原。</p></div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div><button id="menuBtn" class="menu-btn">☰</button><span class="system-name">Aircraft Maintenance Records Management System</span></div>
+      <div class="top-actions">
+        <label class="role-switch">模擬角色
+          <select id="roleSwitch">
+            <option value="maintenance">維修窗口</option>
+            <option value="control">修管單位</option>
+            <option value="quality">品質機號窗口</option>
+            <option value="quality_lead">品質主窗口</option>
+            <option value="correction">品質勘正承辦人</option>
+            <option value="general">一般使用者</option>
+          </select>
+        </label>
+        <span id="userChip" class="user-chip"></span>
+        <button id="logoutBtn" class="link-btn">登出</button>
+      </div>
+    </header>
+    <section id="content" class="content"></section>
+  </main>
+</div>
+
+<div id="modal" class="modal"><div id="modalCard" class="modal-card"></div></div>
+<div id="toast" class="toast"></div>
+<script src="static/app.js?v=3"></script>
+</body>
+</html>
